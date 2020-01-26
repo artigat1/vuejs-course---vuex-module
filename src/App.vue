@@ -36,7 +36,7 @@
         computed: {
             value: {
                 get() {
-                    return this.$store.getters.value;
+                    return this.$store.getters['value'];
                 },
                 set(value) {
                     this.$store.commit('updateValue', value);

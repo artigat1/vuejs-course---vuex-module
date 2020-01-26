@@ -8,7 +8,8 @@ const getters = {
     },
     clickCounter: state => {
         return `${state.counter} clicks`;
-    }
+    },
+    value: state => state.counter,
 };
 
 const mutations = {

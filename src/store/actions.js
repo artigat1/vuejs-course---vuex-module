@@ -1,5 +1,5 @@
 export default {
-    value: ({commit}, payload) => {
+    updateValueAsync: ({commit}, payload) => {
         setTimeout(() => {
             commit('updateValue', payload.by)
         }, payload.duration);
