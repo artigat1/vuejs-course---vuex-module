@@ -1,34 +1,27 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
+import * as getters from './getters';
+import * as mutations from './mutations';
+import * as actions from './actions';
+
 import counter from './modules/counter';
 
 Vue.use(Vuex);
 
 export const store = new Vuex.Store({
-    modules: {
-        counter
-    },
-    
+
     state: {
         value: 0
     },
+
+    getters,
+
+    mutations,
+
+    actions,
     
-    getters: {
-        value: state => state.value
+    modules: {
+        counter
     },
-    
-    mutations: {
-        updateValue: (state, payload) => {
-            state.value = payload;
-        }
-    },
-    
-    actions: {
-        updateValueAsync: ({commit}, payload) => {
-            setTimeout(() => {
-                commit('updateValue', payload.by)
-            }, payload.duration);
-        }
-    }
 });
