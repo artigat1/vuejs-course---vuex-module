@@ -21,8 +21,24 @@ export const store = new Vuex.Store({
         increment: state => {
             state.counter++;
         },
-        decrement: state => {
-            state.counter--;
+        incrementBy: (state, payload) => {
+            state.counter += payload;
+        },
+        decrementBy: (state, payload) => {
+            state.counter -= payload;
+        }
+    },
+    
+    actions: {
+        incrementAsync: ({ commit }, payload) => {
+            setTimeout(() => {
+                commit('incrementBy', payload.by)
+            }, payload.duration);
+        },
+        decrementAsync: ({ commit }, payload) => {
+            setTimeout(() => {
+                commit('decrementBy', payload.by)
+            }, payload.duration);
         }
     }
 });
