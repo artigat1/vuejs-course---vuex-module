@@ -7,17 +7,16 @@
 
 <script>
     import {mapActions, mapMutations} from 'vuex';
-    import * as types from '../store/types';
 
     export default {
         methods: {
-            ...mapMutations({
-                increment: types.INCREMENT_COUNTER,
-                decrement: types.DECREMENT_COUNTER
+            ...mapMutations('counter', {
+                increment: 'incrementCounter',
+                decrement: 'decrementCounter'
             }),
-            ...mapActions({
-                incrementAsync: types.INCREMENT_COUNTER_ASYNC,
-                decrementAsync: types.DECREMENT_COUNTER_ASYNC
+            ...mapActions('counter', {
+                incrementAsync: 'incrementCounterAsync',
+                decrementAsync: 'decrementCounterAsync'
             })
         }
     }

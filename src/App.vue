@@ -24,7 +24,6 @@
     import Result from './components/Result.vue';
     import AnotherResult from './components/AnotherResult.vue';
     import AnotherCounter from './components/AnotherCounter.vue';
-    import * as types from './store/types';
 
     export default {
         components: {
@@ -37,10 +36,10 @@
         computed: {
             value: {
                 get() {
-                    return this.$store.getters[types.VALUE];
+                    return this.$store.getters.value;
                 },
                 set(value) {
-                    this.$store.commit(types.MUTATE_UPDATE_VALUE, value);
+                    this.$store.commit('updateValue', value);
                 }
             }
         }
