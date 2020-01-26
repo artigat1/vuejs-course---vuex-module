@@ -5,7 +5,8 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store({
     state: {
-        counter: 0
+        counter: 0,
+        value: 0
     },
     
     getters: {
@@ -14,18 +15,25 @@ export const store = new Vuex.Store({
         },
         stringCounter: state => {
             return `${state.counter} clicks`;
-        }
+        },
+        value: state => state.value
     },
     
     mutations: {
         increment: state => {
             state.counter++;
         },
+        decrement: state => {
+            state.counter--;
+        },
         incrementBy: (state, payload) => {
             state.counter += payload;
         },
         decrementBy: (state, payload) => {
             state.counter -= payload;
+        },
+        updateValue: (state, payload) => {
+            state.value = payload;
         }
     },
     
@@ -38,6 +46,11 @@ export const store = new Vuex.Store({
         decrementAsync: ({ commit }, payload) => {
             setTimeout(() => {
                 commit('decrementBy', payload.by)
+            }, payload.duration);
+        },
+        updateValueAsync: ({commit}, payload) => {
+            setTimeout(() => {
+                commit('updateValue', payload.by)
             }, payload.duration);
         }
     }

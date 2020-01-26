@@ -8,6 +8,12 @@
                 <hr>
                 <app-counter/>
                 <app-another-counter/>
+                <hr/>
+                <label>
+                    Type new value: 
+                    <input type="text" v-model="value"/>
+                </label>
+                <p>Current value: {{ value }}</p>
             </div>
         </div>
     </div>
@@ -25,6 +31,17 @@
             appResult: Result,
             appAnotherResult: AnotherResult,
             appAnotherCounter: AnotherCounter
+        },
+        
+        computed: {
+            value: {
+                get() {
+                    return this.$store.getters.value;
+                },
+                set(value) {
+                    this.$store.commit('updateValue', value);
+                }
+            }
         }
     }
 </script>
