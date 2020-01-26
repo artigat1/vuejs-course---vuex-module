@@ -1,5 +1,9 @@
-export const updateValueAsync = ({commit}, payload) => {
-    setTimeout(() => {
-        commit('updateValue', payload.by)
-    }, payload.duration);
-};
+import * as types from './types';
+
+export default {
+    [types.UPDATE_VALUE]: ({commit}, payload) => {
+        setTimeout(() => {
+            commit(types.MUTATE_UPDATE_VALUE, payload.by)
+        }, payload.duration);
+    }
+}

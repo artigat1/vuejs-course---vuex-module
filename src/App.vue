@@ -10,7 +10,7 @@
                 <app-another-counter/>
                 <hr/>
                 <label>
-                    Type new value: 
+                    Type new value:
                     <input type="text" v-model="value"/>
                 </label>
                 <p>Current value: {{ value }}</p>
@@ -24,6 +24,7 @@
     import Result from './components/Result.vue';
     import AnotherResult from './components/AnotherResult.vue';
     import AnotherCounter from './components/AnotherCounter.vue';
+    import * as types from './store/types';
 
     export default {
         components: {
@@ -32,14 +33,14 @@
             appAnotherResult: AnotherResult,
             appAnotherCounter: AnotherCounter
         },
-        
+
         computed: {
             value: {
                 get() {
-                    return this.$store.getters.value;
+                    return this.$store.getters[types.VALUE];
                 },
                 set(value) {
-                    this.$store.commit('updateValue', value);
+                    this.$store.commit(types.MUTATE_UPDATE_VALUE, value);
                 }
             }
         }

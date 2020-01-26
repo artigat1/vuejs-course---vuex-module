@@ -1,40 +1,42 @@
+import * as types from '../types';
+
 const state = {
     counter: 0
 };
 
 const getters = {
-    doubleCounter: state =>  {
+    [types.DOUBLE_COUNTER]: state =>  {
         return state.counter * 2;
     },
-    stringCounter: state => {
+    [types.CLICK_COUNTER]: state => {
         return `${state.counter} clicks`;
     }
 };
 
 const mutations = {
-    increment: state => {
+    [types.INCREMENT_COUNTER]: state => {
         state.counter++;
     },
-    decrement: state => {
+    [types.DECREMENT_COUNTER]: state => {
         state.counter--;
     },
-    incrementBy: (state, payload) => {
+    [types.INCREMENT_COUNTER_BY]: (state, payload) => {
         state.counter += payload;
     },
-    decrementBy: (state, payload) => {
+    [types.DECREMENT_COUNTER_BY]: (state, payload) => {
         state.counter -= payload;
     }
 };
 
 const actions = {
-    incrementAsync: ({ commit }, payload) => {
+    [types.INCREMENT_COUNTER_ASYNC]: ({ commit }, payload) => {
         setTimeout(() => {
-            commit('incrementBy', payload.by)
+            commit(types.INCREMENT_COUNTER_BY, payload.by)
         }, payload.duration);
     },
-    decrementAsync: ({ commit }, payload) => {
+    [types.DECREMENT_COUNTER_ASYNC]: ({ commit }, payload) => {
         setTimeout(() => {
-            commit('decrementBy', payload.by)
+            commit(types.DECREMENT_COUNTER_BY, payload.by)
         }, payload.duration);
     }
 };
